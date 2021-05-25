@@ -1,0 +1,42 @@
+{
+  "name": "twitter-image-downloader",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "lint": "run-s lint:*",
+    "lint:eslint": "eslint --ignore-path .gitignore .",
+    "lint:prettier": "prettier --check --ignore-path .gitignore .",
+    "fix": "run-s fix:*",
+    "fix:eslint": "eslint --ignore-path .gitignore --fix .",
+    "fix:prettier": "prettier --write --ignore-path .gitignore ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ansanloms/twitter-image-downloader.git"
+  },
+  "author": "ansanloms",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ansanloms/twitter-image-downloader/issues"
+  },
+  "homepage": "https://github.com/ansanloms/twitter-image-downloader#readme",
+  "dependencies": {
+    "commander": "^7.2.0",
+    "dayjs": "^1.10.4",
+    "dotenv": "^10.0.0",
+    "node-fetch": "^2.6.1",
+    "oauth-1.0a": "^2.2.6"
+  },
+  "devDependencies": {
+    "@types/node-fetch": "^2.5.10",
+    "@typescript-eslint/eslint-plugin": "^4.25.0",
+    "@typescript-eslint/parser": "^4.25.0",
+    "eslint": "^7.27.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.3.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.3.0",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.2.4"
+  }
+}
