@@ -168,7 +168,7 @@ const download = async (url: string, path: string) => {
         if (typeof found !== "undefined") {
           console.log(found);
           const img = new URL(found.url);
-          download(
+          await download(
             found.url + "?format=png&name=4096x4096",
             path.join(
               dest,
