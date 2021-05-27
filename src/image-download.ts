@@ -8,7 +8,7 @@ import dayjs from "dayjs";
 import { Command } from "commander";
 import { getOAuth, getAuthHeader } from "./lib/oauth";
 
-dotenv.config();
+dotenv.config({ path: "../.env" });
 
 const program = new Command();
 
