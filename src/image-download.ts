@@ -14,6 +14,7 @@ const program = new Command();
 
 program
   .option("-u, --username <username>", "Twitter ScreenName.")
+  .option("-d, --dest <dest>", "Path to save the downloaded image.", "./")
   .option(
     "--since-id <since_id>",
     "Returns results with an ID greater than (that is, more recent than) the specified ID."
@@ -31,6 +32,7 @@ program
 program.parse(process.argv);
 
 const username = program.opts()?.username;
+const dest = program.opts().dest;
 const since_id = program.opts()?.sinceId;
 const until_id = program.opts()?.untilId;
 const start_time = program.opts()?.startTime;
@@ -130,6 +132,10 @@ const download = async (url: string, path: string) => {
 };
 
 (async () => {
+  if (!(await (await fs.promises.stat(dest)).isDirectory())) {
+    throw new Error(`${dest} is not directory.`);
+  }
+
   const user = await getUser(username);
 
   console.log(user);
@@ -164,9 +170,12 @@ const download = async (url: string, path: string) => {
           const img = new URL(found.url);
           download(
             found.url + "?format=png&name=4096x4096",
-            `${dayjs(tweet.created_at).format(
-              "YYYYMMDDHHmmss"
-            )}_${path.basename(img.pathname, path.extname(img.pathname))}.png`
+            path.join(
+              dest,
+              `${dayjs(tweet.created_at).format(
+                "YYYYMMDDHHmmss"
+              )}_${path.basename(img.pathname, path.extname(img.pathname))}.png`
+            )
           );
         }
       }
