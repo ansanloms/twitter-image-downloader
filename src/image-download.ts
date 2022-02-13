@@ -147,36 +147,41 @@ const download = async (url: string, path: string) => {
   let next_token = undefined;
   do {
     let timeline: any = await getUserTimeline(user.data.id, next_token);
-    for (const tweet of timeline.data) {
-      console.log(tweet.id);
+    if (timeline.meta.result_count > 0 && timeline.data) {
+      for (const tweet of timeline.data) {
+        console.log(tweet.id);
 
-      if ((tweet?.referenced_tweets || [])[0]?.type === "retweeted") {
-        continue;
-      }
+        if ((tweet?.referenced_tweets || [])[0]?.type === "retweeted") {
+          continue;
+        }
 
-      const media_keys = tweet?.attachments?.media_keys;
-      if (typeof media_keys === "undefined") {
-        continue;
-      }
+        const media_keys = tweet?.attachments?.media_keys;
+        if (typeof media_keys === "undefined") {
+          continue;
+        }
 
-      for (const media_key of media_keys) {
-        const found = timeline.includes.media.find(
-          (elem: { media_key: string; type: string; url?: string }) =>
-            elem.media_key === media_key && elem.type === "photo"
-        );
-
-        if (typeof found !== "undefined") {
-          console.log(found);
-          const img = new URL(found.url);
-          await download(
-            found.url + "?format=png&name=4096x4096",
-            path.join(
-              dest,
-              `${dayjs(tweet.created_at).format(
-                "YYYYMMDDHHmmss"
-              )}_${path.basename(img.pathname, path.extname(img.pathname))}.png`
-            )
+        for (const media_key of media_keys) {
+          const found = timeline.includes.media.find(
+            (elem: { media_key: string; type: string; url?: string }) =>
+              elem.media_key === media_key && elem.type === "photo"
           );
+
+          if (typeof found !== "undefined") {
+            console.log(found);
+            const img = new URL(found.url);
+            await download(
+              found.url + "?format=png&name=4096x4096",
+              path.join(
+                dest,
+                `${dayjs(tweet.created_at).format(
+                  "YYYYMMDDHHmmss"
+                )}_${path.basename(
+                  img.pathname,
+                  path.extname(img.pathname)
+                )}.png`
+              )
+            );
+          }
         }
       }
     }

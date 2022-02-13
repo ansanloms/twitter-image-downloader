@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "lint": "run-s lint:*",
+    "lint": "run-p --continue-on-error lint:*",
     "lint:eslint": "eslint --ignore-path .gitignore .",
     "lint:prettier": "prettier --check --ignore-path .gitignore .",
-    "fix": "run-s fix:*",
+    "fix": "run-p --continue-on-error fix:*",
     "fix:eslint": "eslint --ignore-path .gitignore --fix .",
     "fix:prettier": "prettier --write --ignore-path .gitignore ."
   },
