@@ -1,3 +1,0 @@
-scripts:
-  authorize: deno run --import-map import_map.json --allow-env --allow-read --allow-net authorize.ts
-  image-download: deno run --import-map import_map.json --allow-env --allow-read --allow-write --allow-net image-download.ts
