@@ -2,6 +2,6 @@
   "importMap": "import_map.json",
   "tasks": {
     "authorize": "deno run --allow-env --allow-read --allow-net authorize.ts",
-    "image-download": "deno run --allow-env --allow-read --allow-write --allow-net image-download.ts"
+    "download": "deno run --allow-env --allow-read --allow-write --allow-net download.ts"
   }
 }
