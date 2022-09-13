@@ -15,7 +15,7 @@ const OAUTH_TOKEN_SECRET = Deno.env.get("OAUTH_TOKEN_SECRET") || "";
 const client = getOAuthClient(CONSUMER_KEY, CONSUMER_SECRET);
 
 new Command()
-  .name("image-download")
+  .name("download")
   .version("0.0.1")
   .option("-u, --username <string>", "Twitter ScreenName.")
   .option("-d, --dest <string>", "Path to save the downloaded image.", {
