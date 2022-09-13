@@ -26,6 +26,9 @@ new Command()
     "YYYY-MM-DDTHH:mm:ssZ (ISO 8601/RFC 3339).",
   )
   .option("--end-time <string>", "YYYY-MM-DDTHH:mm:ssZ (ISO 8601/RFC 3339).")
+  .option("--id <string>", "Id.")
+  .option("--since-id <string>", "Since id.")
+  .option("--until-id <string>", "Until id.")
   .action(async (options, ...args) => {
     if (!(await Deno.stat(options.dest)).isDirectory) {
       throw new Error(`${options.dest} is not directory.`);
@@ -46,7 +49,7 @@ new Command()
 
     let nextToken: string | undefined = undefined;
     do {
-      const timeline: any = await getUserTimeline(
+      const timeline = await getUserTimeline(
         client,
         OAUTH_TOKEN,
         OAUTH_TOKEN_SECRET,
@@ -54,6 +57,12 @@ new Command()
         {
           start_time: options.startTime,
           end_time: options.endTime,
+          since_id: options.id
+            ? `${BigInt(options.id) - BigInt(1)}`
+            : options.sinceId,
+          until_id: options.id
+            ? `${BigInt(options.id) + BigInt(1)}`
+            : options.untilId,
           pagination_token: nextToken,
         },
       );
