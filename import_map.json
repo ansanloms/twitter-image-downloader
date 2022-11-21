@@ -1,6 +1,6 @@
 {
   "imports": {
-    "std/": "https://deno.land/std@0.164.0/",
+    "std/": "https://deno.land/std@0.165.0/",
     "dotenv/": "https://deno.land/x/dotenv@v3.2.0/",
     "oauth-1.0a/": "https://raw.githubusercontent.com/snsinfu/deno-oauth-1.0a/",
     "download/": "https://deno.land/x/download@v1.0.1/",
