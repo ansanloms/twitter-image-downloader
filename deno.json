@@ -1,7 +1,7 @@
 {
   "importMap": "import_map.json",
   "tasks": {
-    "authorize": "deno run --allow-env --allow-read --allow-net authorize.ts",
-    "download": "deno run --allow-env --allow-read --allow-write --allow-net download.ts"
+    "install": "deno run -A --unstable ./install.ts",
+    "download": "deno run --allow-env --allow-write --allow-read --allow-net --allow-run --unstable ./download.ts"
   }
 }

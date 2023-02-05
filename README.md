@@ -6,7 +6,8 @@ A tool to download images posted on Twitter in bulk.
 
 ### Authorize
 
-Issue Consumer Key and Token at [developer.twitter.com](https://developer.twitter.com/).
+Issue Consumer Key and Token at
+[developer.twitter.com](https://developer.twitter.com/).
 
 Set to environment variable.
 

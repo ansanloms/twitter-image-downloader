@@ -1,9 +1,9 @@
 {
   "imports": {
-    "std/": "https://deno.land/std@0.165.0/",
+    "std/": "https://deno.land/std@0.176.0/",
     "dotenv/": "https://deno.land/x/dotenv@v3.2.0/",
-    "oauth-1.0a/": "https://raw.githubusercontent.com/snsinfu/deno-oauth-1.0a/",
+    "cliffy/": "https://deno.land/x/cliffy@v0.25.7/",
     "download/": "https://deno.land/x/download@v1.0.1/",
-    "cliffy/": "https://deno.land/x/cliffy@v0.25.4/"
+    "puppeteer/": "https://deno.land/x/puppeteer@16.2.0/"
   }
 }
